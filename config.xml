@@ -144,4 +144,18 @@
         <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
         <splash height="1125" src="resources/ios/splash/Default-Landscape-2436h.png" width="2436" />
     </platform>
+    <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity[@android:name='MainActivity']">
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|screenLayout|smallestScreenSize" android:debuggable="true" />
+    </edit-config>
+    <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
+        <application android:usesCleartextTraffic="true" />
+    </edit-config>
+    <config-file parent="/manifest/application" target="AndroidManifest.xml">
+        <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true" />
+    </config-file>
+    <config-file parent="FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED" target="*-Info.plist">
+        <string>YES</string>
+    </config-file>
+    <engine name="android" spec="8.0.0" />
+    <engine name="ios" spec="5.0.1" />
 </widget>
